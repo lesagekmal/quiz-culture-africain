@@ -292,6 +292,31 @@
             </div>
         </div>
     </footer>
+    
+    <!-- VOTRE SCRIPT PRINCIPAL -->
     <script src="app.js"></script>
+    
+    <!-- SDK Facebook (DOIT ÊTRE APRÈS app.js) -->
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId: '1980127115873990', // VOTRE APP ID
+          cookie: true,
+          xfbml: true,
+          version: 'v19.0'
+        });
+        console.log('SDK Facebook initialisé !');
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/fr_FR/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    
 </body>
 </html>
