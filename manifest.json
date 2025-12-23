@@ -1,0 +1,88 @@
+{
+    "name": "Quiz Culturel Africain",
+    "short_name": "QuizAfrique",
+    "description": "Quiz interactif gratuit sur la culture africaine. Testez vos connaissances !",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#2a9d8f",
+    "theme_color": "#2a9d8f",
+    "orientation": "portrait",
+    "scope": "/",
+    "lang": "fr",
+    "categories": ["education", "games"],
+    "icons": [
+        {
+            "src": "assets/icon-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "assets/icon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icon-128x128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icon-152x152.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "assets/screenshot1.jpg",
+            "sizes": "1280x720",
+            "type": "image/jpeg",
+            "form_factor": "wide",
+            "label": "Accueil du quiz"
+        },
+        {
+            "src": "assets/screenshot2.jpg",
+            "sizes": "750x1334",
+            "type": "image/jpeg",
+            "form_factor": "narrow",
+            "label": "Question en cours"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Nouveau Quiz",
+            "short_name": "Jouer",
+            "description": "Commencer un nouveau quiz",
+            "url": "/#play",
+            "icons": [{ "src": "assets/play-icon.png", "sizes": "96x96" }]
+        },
+        {
+            "name": "Classement",
+            "short_name": "Top 10",
+            "description": "Voir le classement",
+            "url": "/#leaderboard",
+            "icons": [{ "src": "assets/trophy-icon.png", "sizes": "96x96" }]
+        }
+    ]
+}
