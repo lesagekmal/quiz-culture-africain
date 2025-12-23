@@ -373,48 +373,52 @@ function returnToHome() {
 }
 
 function shareScore() {
-    const categoryPlayed = quizList[0]?.category || "Toutes catégories";
     const percent = Math.round((score / quizList.length) * 100);
-    const categoryMessages = {
-        "Histoire africaine": "📜 Je maîtrise l'histoire africaine !",
-        "Géographie et pays": "🌍 Je connais l'Afrique par cœur !",
-        "Musique et danse": "🎶 Le rythme africain est dans mon sang !",
-        "Cuisine africaine": "🍲 La cuisine africaine n'a plus de secret pour moi !",
-        "Sport et jeux traditionnels": "⚽ Je domine les sports africains !",
-        "Personnalités contemporaines": "👤 Je connais les grandes figures africaines !",
-        "Langues et ethnies": "🗣️ Les langues africaines me parlent !",
-        "Littérature et philosophie": "📚 La pensée africaine m'inspire !",
-        "Art et artisanat": "🎨 L'art africain me fascine !",
-        "Religion et spiritualité": "⛪ La spiritualité africaine m'éclaire !"
-    };
-    const categoryMessage = categoryMessages[categoryPlayed] || "🎯 Je relève le défi du quiz africain !";
-    const shareMessage = `${categoryMessage}
-
-🏆 SCORE : ${score}/${quizList.length} (${percent}%)
-📊 CATÉGORIE : ${categoryPlayed}
-👤 JOUEUR : ${playerName}
-
-Défiez-moi sur le Quiz Culture Africaine !
-${window.location.href}
-
-#QuizAfrique #CultureAfricaine #QuizCulturel`;
-    if (navigator.share) {
-        navigator.share({
-            title: `Score Quiz Culture Africaine - ${playerName}`,
-            text: shareMessage,
-            url: window.location.href
-        })
-        .then(() => {
-            console.log("✅ Score partagé avec succès");
-        })
-        .catch(error => {
-            console.log("❌ Partage annulé ou erreur:", error);
-            copyToClipboard(shareMessage);
+    const shareUrl = window.location.href;
+    const shareMessage = `🎯 J'ai obtenu ${score}/${quizList.length} (${percent}%) au Quiz Culture Africain !\nTestez vos connaissances : ${shareUrl}\n\n#QuizAfrique #CultureAfricaine`;
+    
+    // Vérifier si le SDK Facebook est chargé
+    if (typeof FB !== 'undefined') {
+        console.log("Tentative de partage Facebook...");
+        FB.ui({
+            method: 'share',
+            href: shareUrl,
+            quote: shareMessage,
+            hashtag: '#QuizAfrique'
+        }, function(response) {
+            if (response && !response.error_message) {
+                showToast("✅ Partagé sur Facebook !");
+            } else {
+                console.log('Erreur Facebook ou partage annulé');
+                fallbackShare(shareMessage);
+            }
         });
     } else {
-        copyToClipboard(shareMessage);
+        console.log('SDK Facebook non chargé, fallback...');
+        fallbackShare(shareMessage);
     }
 }
+
+function fallbackShare(text) {
+    // Méthode moderne (mobile surtout)
+    if (navigator.share) {
+        navigator.share({
+            title: 'Mon score au Quiz Culture Africain',
+            text: text,
+            url: window.location.href
+        });
+    } else {
+        // Méthode de secours : copie dans presse-papier
+        navigator.clipboard.writeText(text).then(() => {
+            showToast("✅ Score copié ! Collez-le où vous voulez (WhatsApp, etc.)");
+        }).catch(() => {
+            // Fallback ultime
+            prompt("Copiez ce texte pour partager votre score :", text);
+        });
+    }
+}
+
+
 
 function shareLeaderboard() {
     const categoryPlayed = quizList[0]?.category || "Toutes catégories";
