@@ -568,3 +568,41 @@ function initApp() {
 }
 
 document.addEventListener("DOMContentLoaded", initApp);
+
+
+
+
+
+
+// Fonctions pour copier les informations de don
+function copyMTNNumber() {
+    const text = "+229 01 66 62 84 63";
+    copyToClipboard(text);
+}
+
+function copyWesternName() {
+    const text = "KOUDAYA Lossa Maxim";
+    copyToClipboard(text);
+}
+
+function copyPayPalEmail() {
+    const text = "lesagekmal@gmail.com";
+    copyToClipboard(text);
+}
+
+function showWesternGuide() {
+    const guide = `📋 GUIDE WESTERN UNION :
+    
+1. Rendez-vous dans une agence Western Union
+2. Remplissez le formulaire avec :
+   • Nom du bénéficiaire : KOUDAYA Lossa Maxim
+   • Pays : Bénin
+   • Ville : Cotonou
+   • Téléphone : +229 01 66 62 84 63
+3. Gardez le numéro MTCN
+4. Envoyez-nous le MTCN à : lesagekmal@gmail.com
+
+Merci pour votre soutien ! 🙏`;
+    
+    showToast(guide, false, 10000);
+}

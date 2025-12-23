@@ -2,7 +2,15 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
-    <!-- Open Graph pour Facebook (OBLIGATOIRE) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Culturel Africain | Testez vos connaissances</title>
+    <meta name="description" content="Quiz gratuit sur la culture africaine. Testez vos connaissances sur l'histoire, la géographie, la musique et les traditions africaines." />
+    <meta name="author" content="Quiz Culturel Africain" />
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- ========== BALISES OPEN GRAPH OBLIGATOIRES ========== -->
     <meta property="og:url" content="https://lesagekmal.github.io/quiz-culture-africain/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Quiz Culturel Africain | Testez vos connaissances" />
@@ -11,14 +19,7 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="fb:app_id" content="1980127115873990" />
-    <meta property="og:image" content="https://lesagekmal.github.io/quiz-culture-africain/assets/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz Culturel Africain | Testez vos connaissances</title>
-    <meta name="description" content="Quiz gratuit sur la culture africaine. Testez vos connaissances sur l'histoire, la géographie, la musique et les traditions africaines." />
-    <meta name="author" content="Quiz Culturel Africain" />
-    <link rel="icon" type="image/png" href="assets/logo.png" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
     <style>
         .app-logo {
             max-width: 180px;
@@ -242,6 +243,8 @@
             </div>
         </section>
     </main>
+    
+    <!-- ========== MODAL DES DONS AVEC WESTERN UNION ========== -->
     <div id="donation-modal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">
@@ -260,23 +263,65 @@
                     <li><i class="fas fa-check"></i> Promouvoir la culture africaine</li>
                     <li><i class="fas fa-check"></i> Payer les serveurs et l'hébergement</li>
                 </ul>
+                
                 <div class="donation-options-modal">
+                    <!-- Option 1: MTN Money -->
                     <div class="donation-option">
                         <h4><i class="fas fa-mobile-alt"></i> Mobile Money (Bénin)</h4>
                         <div class="donation-info">
                             <p><strong>MTN Money :</strong></p>
                             <div class="number-box">
-                                <code id="donation-number">+229 01 66 62 84 63</code>
-                                <button class="copy-btn" onclick="copyDonationNumber()">
+                                <code id="mtn-number">+229 01 66 62 84 63</code>
+                                <button class="copy-btn" onclick="copyMTNNumber()">
                                     <i class="far fa-copy"></i> Copier
                                 </button>
                             </div>
+                            <p class="donation-note">Envoyez le montant de votre choix. Merci !</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Option 2: Western Union (RÉTABLIE) -->
+                    <div class="donation-option">
+                        <h4><i class="fas fa-exchange-alt"></i> Western Union</h4>
+                        <div class="donation-info">
+                            <p><strong>Bénéficiaire :</strong></p>
+                            <div class="number-box">
+                                <code id="western-name">KOUDAYA Lossa Maxim</code>
+                                <button class="copy-btn" onclick="copyWesternName()">
+                                    <i class="far fa-copy"></i> Copier
+                                </button>
+                            </div>
+                            <p><strong>Téléphone :</strong> +229 01 66 62 84 63</p>
+                            <p><strong>Pays :</strong> Bénin</p>
+                            <p><strong>Ville :</strong> Cotonou</p>
                             <p class="donation-note">
-                                Envoyez le montant de votre choix. Merci !
+                                Après envoi, envoyez-nous le MTCN à : lesagekmal@gmail.com
                             </p>
+                            <button class="info-btn" onclick="showWesternGuide()">
+                                <i class="fas fa-info-circle"></i> Guide Western Union
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Option 3: PayPal -->
+                    <div class="donation-option">
+                        <h4><i class="fab fa-paypal"></i> PayPal / Carte bancaire</h4>
+                        <div class="donation-info">
+                            <p><strong>PayPal :</strong></p>
+                            <div class="number-box">
+                                <code id="paypal-email">lesagekmal@gmail.com</code>
+                                <button class="copy-btn" onclick="copyPayPalEmail()">
+                                    <i class="far fa-copy"></i> Copier
+                                </button>
+                            </div>
+                            <p class="donation-note">PayPal accepte les cartes internationales</p>
+                            <a href="https://paypal.me/lesagekmal" target="_blank" class="btn-primary" style="display: block; margin-top: 10px; text-align: center;">
+                                <i class="fab fa-paypal"></i> Donner via PayPal
+                            </a>
                         </div>
                     </div>
                 </div>
+                
                 <div class="modal-footer">
                     <p class="thank-you-text">
                         <i class="fas fa-hands-helping"></i>
@@ -286,6 +331,7 @@
             </div>
         </div>
     </div>
+    
     <footer class="global-footer">
         <div class="footer-content">
             <div class="footer-links">
